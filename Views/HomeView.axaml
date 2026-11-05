@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:WestCoastEducation.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WestCoastEducation.Views.HomeView"
+             x:DataType="vm:HomeViewModel">
+
+    <StackPanel Margin="20" Spacing="20" VerticalAlignment="Center">
+        <TextBlock Text="{Binding WelcomeMessage}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextBrush}"/>
+        <TextBlock Text="{Binding Description}" FontSize="14" Foreground="{DynamicResource PrimaryTextBrush}" TextWrapping="Wrap"/>
+        
+        <Border Background="#1E293B" Padding="20" CornerRadius="8" Margin="0,20,0,0">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Systemstatus" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource ForegroundBrush}"/>
+                <TextBlock Text="• REST API: Ansluten till RestDb.io" Foreground="#34D399"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

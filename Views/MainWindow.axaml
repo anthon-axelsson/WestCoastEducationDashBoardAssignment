@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:WestCoastEducation.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1050" d:DesignHeight="600"
+        x:Class="WestCoastEducation.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="WestCoast Education - Administration"
+        Background="#0F172A" Foreground="{DynamicResource ForegroundBrush}">
+
+    <Grid ColumnDefinitions="240, *">
+        
+        <Grid Grid.Column="0" Background="{DynamicResource BackgroundBrush}" RowDefinitions="Auto, *, Auto">
+            <StackPanel Grid.Row="0" Margin="20" Spacing="5">
+                <TextBlock Text="WestCoast" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                <TextBlock Text="Education Admin" FontSize="14" Foreground="{DynamicResource SecondaryTextBrush}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Margin="10,0" Spacing="5">
+                <Button Content="Hem" Command="{Binding NavigateHomeCommand}" HorizontalAlignment="Stretch" Background="Transparent" Foreground="{DynamicResource ForegroundBrush}" Padding="12"/>
+                <Button Content="Kurser" Command="{Binding NavigateCoursesCommand}" HorizontalAlignment="Stretch" Background="Transparent" Foreground="{DynamicResource ForegroundBrush}" Padding="12"/>
+                <Button Content="Studenter" Command="{Binding NavigateStudentsCommand}" HorizontalAlignment="Stretch" Background="Transparent" Foreground="{DynamicResource ForegroundBrush}" Padding="12"/>
+                <Button Content="Lärare" Command="{Binding NavigateTeachersCommand}" HorizontalAlignment="Stretch" Background="Transparent" Foreground="{DynamicResource ForegroundBrush}" Padding="12"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="30" RowDefinitions="Auto, *, Auto">
+            <TextBlock Grid.Row="0" Text="WestCoast Education Administration" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource ForegroundBrush}" Margin="0,0,0,20"/>
+
+            <ContentControl Grid.Row="1" Content="{Binding CurrentPage}" />
+
+        </Grid>
+        
+    </Grid>
+</Window>

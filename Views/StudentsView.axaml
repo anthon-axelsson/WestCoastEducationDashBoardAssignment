@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:WestCoastEducation.ViewModels"
+             xmlns:m="using:WestCoastEducation.Models"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="550"
+             x:Class="WestCoastEducation.Views.StudentsView"
+             x:DataType="vm:StudentsViewModel">
+
+    <Grid Margin="20">
+        <Grid RowDefinitions="Auto, *, Auto, Auto" 
+              IsVisible="{Binding CurrentStudentView, Converter={x:Static ObjectConverters.IsNull}}">
+            
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Text="Administrera Studenter" FontSize="18" FontWeight="SemiBold" Foreground="{DynamicResource PrimaryTextBrush}" VerticalAlignment="Center"/>
+                <Button Content="+ Lägg till ny student" Command="{Binding ShowAddFormCommand}" Background="{DynamicResource ThirdTextBrush}" Foreground="{DynamicResource ForegroundBrush}" Margin="20,0,0,0"/>
+            </StackPanel>
+            
+            <ListBox Grid.Row="1" ItemsSource="{Binding Students}" SelectedItem="{Binding SelectedStudent}" Background="{DynamicResource BackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}" Margin="0,15">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="m:Student">
+                        <StackPanel Orientation="Horizontal" Spacing="15">
+                            <TextBlock Text="{Binding FirstName}" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                            <TextBlock Text="{Binding LastName}"/>
+                            <TextBlock Text="{Binding PersonalNumber}" Foreground="{DynamicResource SecondaryTextBrush}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+                </Grid>
+
+        <ContentControl Content="{Binding CurrentStudentView}" 
+                        IsVisible="{Binding CurrentStudentView, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:WestCoastEducation.ViewModels"
+             xmlns:m="using:WestCoastEducation.Models"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="550"
+             x:Class="WestCoastEducation.Views.TeachersView"
+             x:DataType="vm:TeachersViewModel">
+
+    <Grid Margin="20">
+        <Grid RowDefinitions="Auto, *, Auto, Auto, Auto"
+              IsVisible="{Binding CurrentTeacherView, Converter={x:Static ObjectConverters.IsNull}}">
+
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Text="Administrera Lärare" FontSize="18" FontWeight="SemiBold" Foreground="{DynamicResource PrimaryTextBrush}" VerticalAlignment="Center"/>
+                <Button Content="+ Lägg till ny lärare" Command="{Binding ShowAddFormCommand}" Background="{DynamicResource ThirdTextBrush}" Foreground="{DynamicResource ForegroundBrush}" Margin="20,0,0,0"/>
+            </StackPanel>
+
+            <ListBox Grid.Row="1" ItemsSource="{Binding Teachers}" SelectedItem="{Binding SelectedTeacher}" Background="{DynamicResource BackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}" Margin="0,15">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="m:Teacher">
+                        <StackPanel Orientation="Horizontal" Spacing="15">
+                            <TextBlock Text="{Binding FirstName}" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextBrush}"/>
+                            <TextBlock Text="{Binding LastName}"/>
+                            <TextBlock Text="{Binding SubjectArea}" Foreground="{DynamicResource SecondaryTextBrush}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Button Grid.Row="2" Content="Redigera markerad lärare" Command="{Binding EditTeacherCommand}" CommandParameter="{Binding SelectedTeacher}" Background="#3B82F6" Foreground="White" HorizontalAlignment="Stretch" Margin="0,0,0,5"/>
+        </Grid>
+
+        <ContentControl Content="{Binding CurrentTeacherView}"
+                        IsVisible="{Binding CurrentTeacherView, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+    </Grid>
+</UserControl>

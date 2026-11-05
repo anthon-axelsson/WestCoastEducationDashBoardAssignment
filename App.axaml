@@ -1,0 +1,25 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="WestCoastEducation.App"
+             xmlns:local="using:WestCoastEducation"
+             RequestedThemeVariant="Default">
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <Application.Resources>
+        <SolidColorBrush x:Key="PrimaryBrandBrush">#2E3192</SolidColorBrush>
+        <SolidColorBrush x:Key="ForegroundBrush">#F5F5F5</SolidColorBrush>
+        <SolidColorBrush x:Key="BackgroundBrush">#1E293B</SolidColorBrush>
+        <SolidColorBrush x:Key="PrimaryTextBrush">#38BDF8</SolidColorBrush>
+        <SolidColorBrush x:Key="SecondaryTextBrush">#94A3B8</SolidColorBrush>
+        <SolidColorBrush x:Key="ThirdTextBrush">#10B981</SolidColorBrush>
+    </Application.Resources>
+
+    
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+</Application>
